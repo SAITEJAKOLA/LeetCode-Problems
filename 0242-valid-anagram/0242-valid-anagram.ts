@@ -14,8 +14,6 @@ function isAnagram(s: string, t: string): boolean {
     for(let val of t){
         fc2[val] = (fc2[val]||0)+1;
     }
-    console.log(fc1, fc2);
-
     for(let key in fc1){
         if(!(key in fc2)){
             return false;
