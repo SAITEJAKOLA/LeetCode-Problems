@@ -1,7 +1,5 @@
 //Write a function which takes in a string and returns counts of each character in the string.
 
-import { realpathSync } from 'fs';
-
 function charCount(str: string): { [key: string]: number } {
     if (str.length === 0) return {}; //defualt case
     // fc is frequency counter
