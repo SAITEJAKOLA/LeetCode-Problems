@@ -47,10 +47,10 @@ function maxSubArraySumusingSlidingWindow(arr: number[], n: number): number {
         max = Math.max(max, tempMax)
     }
     //alternative solution is we can start at n and so the same stuff but go till end of the array
-    // for(let i=n; i< arr.length; i++){
-    // tempMax = max - arr[i-n]+ arr[i]
-    // max = Math.max(max, tempMax)
-    //}
+    // for (let i = n; i < arr.length; i++) {
+    //     tempMax = max - arr[i - n] + arr[i]
+    //     max = Math.max(max, tempMax)
+    // }
     return max;
 }
 console.log(maxSubArraySumusingSlidingWindow([1, 2, 5, 2, 8, 1, 5], 4));
