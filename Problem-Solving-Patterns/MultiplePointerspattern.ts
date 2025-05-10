@@ -55,12 +55,11 @@ function CountUniqueValues(arr: number[]): number {
         if (arr[i] != arr[j]) {
             i++;
             arr[i] = arr[j];
-            j++;
         }
     }
     return i + 1;
 }
-console.log(CountUniqueValues([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6]));
+console.log(CountUniqueValues([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8]));
 
 
 //Easier way of doing is using frequency counters
