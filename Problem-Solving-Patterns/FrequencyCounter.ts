@@ -92,6 +92,18 @@ function areThereDuplicatess(...args: (string | number)[]): boolean {
 console.log(areThereDuplicatess('a', 'b', 'c', 'a'));
 console.log(areThereDuplicatess(1, 2, 2));
 console.log(areThereDuplicatess(1, 2, 3));
+
+//One more way of solving this function is using sets
+//Answer is very simple create a new set using this array and check the lengths of set and array, if both are same return false else retrun true
+
+function areThereDuplicatesUsingSets(...args: (string | number)[]): boolean {
+    if (args.length === 0) return false;
+    let newSet = new Set(args)
+    if (args.length === newSet.size) return false
+    return true
+}
+
+console.log(areThereDuplicatesUsingSets('a', 'b', 'c', 'a'));
 /*
 Frequency Counter - constructNote
 Write a function called constructNote, which accepts two strings, a message and some letters. The function should return true if the message can be built with the letters that you are given, or it should return false.
@@ -132,3 +144,25 @@ function constructNote(str1: string, str2: string): boolean {
 constructNote('aa', 'abc') // false
 constructNote('abc', 'dcba') // true
 constructNote('aabbcc', 'bcabcaddff') // true
+
+/*
+Frequency Counter - findAllDuplicates
+Given an array of positive integers, some elements appear twice and others appear once. Find all the elements that appear twice in this array. Note that you can return the elements in any order.
+
+findAllDuplicates([4,3,2,7,8,2,3,1]) // array with 2 and 3
+findAllDuplicates([4, 3, 2, 1, 0]) // []
+findAllDuplicates([4, 3, 2, 1, 0, 1, 2, 3]) // array with 3, 2, and 1
+Time Complexity - O(n)
+*/
+
+function findAllDuplicates(arr: number[]): number[] {
+    if (arr.length === 0) return [];
+    let fc: { [key: number]: number } = {}
+    for (let val of arr) fc[val] = (fc[val] || 0) + 1;
+    let duplicatesArray: number[] = [];
+    for (let key in fc) {
+        if (fc[key] == Number(2)) duplicatesArray.push(Number(key));
+    }
+    return duplicatesArray;
+}
+console.log(findAllDuplicates([4, 3, 2, 7, 8, 2, 3, 1]));
