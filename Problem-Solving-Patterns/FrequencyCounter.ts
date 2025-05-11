@@ -243,3 +243,16 @@ function findPairUsingFC(arr: number[], n: number): boolean {
 }
 console.log('------------findPairUsingFC');
 console.log(findPairUsingFC([6, 1, 4, 10, 2, 4], 2));
+
+
+function findPairUsingSets(arr: number[], n: number): boolean {
+    if (arr.length === 0) return false
+    let newSet = new Set();
+    for (let num of arr) {
+        if (newSet.has(num + n) || newSet.has(num - n)) return true
+        newSet.add(num)
+    }
+    return false
+}
+console.log('------------findPairUsingSets');
+console.log(findPairUsingFC([6, 1, 4, 10, 2, 4], 2));
