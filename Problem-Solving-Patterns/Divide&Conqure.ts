@@ -134,3 +134,40 @@ console.log(findRotatedIndex([6, 7, 8, 9, 1, 2, 3, 4], 3)) // 6
 console.log(findRotatedIndex([37, 44, 66, 102, 10, 22], 14)) // -1
 console.log(findRotatedIndex([6, 7, 8, 9, 1, 2, 3, 4], 12)) // -1
 console.log(findRotatedIndex([11, 12, 13, 14, 15, 16, 3, 5, 7, 9], 16)) // 5
+
+/*
+Divide and Conquer - countZeroes
+Given an array of 1s and 0s which has all 1s first followed by all 0s, write a function called countZeroes, which returns the number of zeroes in the array.
+
+countZeroes([1,1,1,1,0,0]) // 2
+countZeroes([1,0,0,0,0]) // 4
+countZeroes([0,0,0]) // 3
+countZeroes([1,1,1,1]) // 0
+Time Complexity - O(log n)
+*/
+
+function countZeroes(arr: number[]): number {
+
+    if (arr.length === 0) return 0;
+    let left = 0;
+    let right = arr.length - 1;
+    let result = -1;
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        if (arr[mid] === 0) {
+            result = mid;
+            right = mid - 1;
+        } else if (arr[mid] === 1) {
+            left = mid + 1;
+        } else {
+            right = mid + 1;
+        }
+    }
+    if (result == -1) return 0;
+    return arr.length - result;
+}
+console.log('--------------countZeroes');
+console.log(countZeroes([1, 1, 1, 1, 0, 0]));//2
+console.log(countZeroes([1, 0, 0, 0, 0]));//4
+console.log(countZeroes([0, 0, 0]));//3
+console.log(countZeroes([1, 1, 1, 1]));//0
