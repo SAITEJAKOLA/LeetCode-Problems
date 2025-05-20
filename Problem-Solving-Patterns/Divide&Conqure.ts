@@ -103,21 +103,29 @@ findRotatedIndex([11,12,13,14,15,16,3,5,7,9], 16) // 5
 */
 function findRotatedIndex(arr: number[], n: number): number {
     if (arr.length === 0) return -1;
-    arr.sort((a, b) => b - a); // O(log n)
     let left = 0;
     let right = arr.length - 1;
-    let result = -1;
     while (left <= right) {
-        let mid = Math.floor((left + right) / 2)
-        if (arr[mid] === n) {
-            result = mid;
-        } else if (arr[mid] < n) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
+        let mid = Math.floor((left + right) / 2);
+        if (arr[mid] === n) return mid;
+        // if arr[left]<= arr[mid] then left side is sorted else right is sorted so shrink the space to that side and continue the search.
+        if (arr[left] < arr[mid]) {
+            //check if number is in left sorted array
+            // check if arr[left]<=n and n< arr[mid]
+            if (arr[left] <= n && n < arr[mid]) {
+                right = mid - 1;
+            }
+            else { left = mid + 1; }
+        }
+        //as we came to else condition we can say that the array is right sorted
+        else {
+            //check if arr[mid]<=n and number <= arr[right]
+            if (arr[mid] <= n && n <= arr[right]) {
+                left = mid + 1;
+            } else { right = mid - 1; }
         }
     }
-    return result;
+    return -1;
 }
 console.log('---------------findRotatedIndex');
 console.log(findRotatedIndex([3, 4, 1, 2], 4))// 1
