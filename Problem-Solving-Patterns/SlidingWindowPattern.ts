@@ -138,3 +138,40 @@ function minSubArrayLen(arr: number[], n: number): number {
     }
     return minLength = minLength === Infinity ? 0 : minLength
 }
+
+/*
+Sliding Window - findLongestSubstring
+Write a function called findLongestSubstring, which accepts a string and returns the length of the longest substring with all distinct characters.
+
+findLongestSubstring('') // 0
+findLongestSubstring('rithmschool') // 7
+findLongestSubstring('thisisawesome') // 6
+findLongestSubstring('thecatinthehat') // 7
+findLongestSubstring('bbbbbb') // 1
+findLongestSubstring('longestsubstring') // 8
+findLongestSubstring('thisishowwedoit') // 6
+Time Complexity - O(n)
+*/
+
+function findLongestSubstring(str: string): number {
+    if (str.length === 0) return 0;
+    let fc: { [key: string]: number } = {}
+    let start = 0;
+    let maxLength = 0;
+    for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+        if (fc[char] !== undefined && fc[char] >= start) {
+            start = fc[char] + 1;
+        }
+        fc[char] = i;
+        maxLength = Math.max(maxLength, i - start + 1);
+    }
+    return maxLength;
+}
+console.log('--------------findLongestSubstring');
+console.log(findLongestSubstring('rithmschool')); //7
+console.log(findLongestSubstring('thisisawesome')); // 6
+console.log(findLongestSubstring('thecatinthehat')); // 7
+console.log(findLongestSubstring('bbbbbb')); // 1
+console.log(findLongestSubstring('longestsubstring')); // 8
+console.log(findLongestSubstring('thisishowwedoit')) // 6);
