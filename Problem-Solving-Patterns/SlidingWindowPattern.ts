@@ -6,8 +6,6 @@ Depending on a certain condition, the window either increases or closes(and a ne
 Very useful for keeping a track of a subset of data in an aray/string etc.....
 */
 
-import { log } from "console";
-
 /*
 maxSubarraySum - which accepts an array of integers and a number called n.
 The function should calculate the maxium sum of n consecutive elements in the array.
@@ -22,37 +20,36 @@ maxSubarraySum([1,2,5,2,8,1,5],4)//17
 
 //timecomplexity is of O(n^2)
 function maxSubArraySum(arr: number[], n: number): number {
-    if (arr.length === 0) return 0
-    let max = 0;
-    for (let i = 0; i <= arr.length - n + 1; i++) {
-        let temp = 0;
-        for (let j = 0; j < n; j++)
-            temp += arr[i + j];
-        if (temp > max) max = temp;
-    }
-    return max
+	if (arr.length === 0) return 0;
+	let max = 0;
+	for (let i = 0; i <= arr.length - n + 1; i++) {
+		let temp = 0;
+		for (let j = 0; j < n; j++) temp += arr[i + j];
+		if (temp > max) max = temp;
+	}
+	return max;
 }
 console.log(maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 2));
 console.log(maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 4));
 
 //Using sliding window method with time complexity of O(n)
 function maxSubArraySumusingSlidingWindow(arr: number[], n: number): number {
-    if (arr.length === 0) return 0
-    let max = 0;
-    let tempMax = 0;
-    for (let i = 0; i < n; i++) max += arr[i];
-    for (let i = 0; i < arr.length - n; i++) {
-        // console.log(`Max: ${max} \n arr[i]: ${arr[i]} \n arr[i+n]: ${arr[i + n]}`);
-        tempMax = max - arr[i] + arr[i + n]
-        // console.log(`tempMax: ${tempMax}`);
-        max = Math.max(max, tempMax)
-    }
-    //alternative solution is we can start at n and so the same stuff but go till end of the array
-    // for (let i = n; i < arr.length; i++) {
-    //     tempMax = max - arr[i - n] + arr[i]
-    //     max = Math.max(max, tempMax)
-    // }
-    return max;
+	if (arr.length === 0) return 0;
+	let max = 0;
+	let tempMax = 0;
+	for (let i = 0; i < n; i++) max += arr[i];
+	for (let i = 0; i < arr.length - n; i++) {
+		// console.log(`Max: ${max} \n arr[i]: ${arr[i]} \n arr[i+n]: ${arr[i + n]}`);
+		tempMax = max - arr[i] + arr[i + n];
+		// console.log(`tempMax: ${tempMax}`);
+		max = Math.max(max, tempMax);
+	}
+	//alternative solution is we can start at n and so the same stuff but go till end of the array
+	// for (let i = n; i < arr.length; i++) {
+	//     tempMax = max - arr[i - n] + arr[i]
+	//     max = Math.max(max, tempMax)
+	// }
+	return max;
 }
 console.log(maxSubArraySumusingSlidingWindow([1, 2, 5, 2, 8, 1, 5], 4));
 console.log(maxSubArraySumusingSlidingWindow([2, 6, 9, 2, 1, 8, 5, 6, 3], 3));
@@ -75,31 +72,30 @@ Time Complexity - O(N)
 Space Complexity - O(1)
 */
 
-function maxSubarraySum(arr: number[], n: number): number | null {
-    if (arr.length < n) return null;
+function maxSubarraySum1(arr: number[], n: number): number | null {
+	if (arr.length < n) return null;
 
-    let maxSum = 0;
-    let tempSum = 0;
+	let maxSum = 0;
+	let tempSum = 0;
 
-    for (let i = 0; i < n; i++) {
-        tempSum += arr[i];
-    }
-    maxSum = tempSum;
+	for (let i = 0; i < n; i++) {
+		tempSum += arr[i];
+	}
+	maxSum = tempSum;
 
-    for (let i = n; i < arr.length; i++) {
-        tempSum = tempSum - arr[i - n] + arr[i];
-        maxSum = Math.max(maxSum, tempSum);
-    }
+	for (let i = n; i < arr.length; i++) {
+		tempSum = tempSum - arr[i - n] + arr[i];
+		maxSum = Math.max(maxSum, tempSum);
+	}
 
-    return maxSum;
+	return maxSum;
 }
-console.log("-------------maxSubarraySum");
-console.log(maxSubarraySum([100, 200, 300, 400], 2));
-console.log(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4));
-console.log(maxSubarraySum([-3, 4, 0, -2, 6, -1], 2));
-console.log(maxSubarraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2));
-console.log(maxSubarraySum([2, 3], 3));
-
+console.log('-------------maxSubarraySum');
+console.log(maxSubarraySum1([100, 200, 300, 400], 2));
+console.log(maxSubarraySum1([1, 4, 2, 10, 23, 3, 1, 0, 20], 4));
+console.log(maxSubarraySum1([-3, 4, 0, -2, 6, -1], 2));
+console.log(maxSubarraySum1([3, -2, 7, -4, 1, -1, 4, -2, 1], 2));
+console.log(maxSubarraySum1([2, 3], 3));
 
 /*
 Sliding Window - minSubArrayLen
@@ -120,23 +116,23 @@ Time Complexity - O(n)
 Space Complexity - O(1)
 */
 function minSubArrayLen(arr: number[], n: number): number {
-    if (arr.length === 0) return 0;
-    let minLength = Infinity;
-    let sum = 0;
-    let start = 0;
-    //start both the pointers from a single point( start=0 and end =0)
-    for (let end = 0; end < arr.length; end++) {
-        //start sum with the arr[end]
-        sum += arr[end];
-        // [2(s)(e),3,1,2,4,3]
-        // what we do here is if sum> n then start removing the value from starting arr[start] and see if sum is still > n.
-        while (sum >= n) {
-            minLength = Math.min(minLength, end - start + 1);
-            sum -= arr[start];
-            start++;
-        }
-    }
-    return minLength = minLength === Infinity ? 0 : minLength
+	if (arr.length === 0) return 0;
+	let minLength = Infinity;
+	let sum = 0;
+	let start = 0;
+	//start both the pointers from a single point( start=0 and end =0)
+	for (let end = 0; end < arr.length; end++) {
+		//start sum with the arr[end]
+		sum += arr[end];
+		// [2(s)(e),3,1,2,4,3]
+		// what we do here is if sum> n then start removing the value from starting arr[start] and see if sum is still > n.
+		while (sum >= n) {
+			minLength = Math.min(minLength, end - start + 1);
+			sum -= arr[start];
+			start++;
+		}
+	}
+	return (minLength = minLength === Infinity ? 0 : minLength);
 }
 
 /*
@@ -154,19 +150,19 @@ Time Complexity - O(n)
 */
 
 function findLongestSubstring(str: string): number {
-    if (str.length === 0) return 0;
-    let fc: { [key: string]: number } = {}
-    let start = 0;
-    let maxLength = 0;
-    for (let i = 0; i < str.length; i++) {
-        const char = str[i];
-        if (fc[char] !== undefined && fc[char] >= start) {
-            start = fc[char] + 1;
-        }
-        fc[char] = i;
-        maxLength = Math.max(maxLength, i - start + 1);
-    }
-    return maxLength;
+	if (str.length === 0) return 0;
+	let fc: { [key: string]: number } = {};
+	let start = 0;
+	let maxLength = 0;
+	for (let i = 0; i < str.length; i++) {
+		const char = str[i];
+		if (fc[char] !== undefined && fc[char] >= start) {
+			start = fc[char] + 1;
+		}
+		fc[char] = i;
+		maxLength = Math.max(maxLength, i - start + 1);
+	}
+	return maxLength;
 }
 console.log('--------------findLongestSubstring');
 console.log(findLongestSubstring('rithmschool')); //7
@@ -174,4 +170,4 @@ console.log(findLongestSubstring('thisisawesome')); // 6
 console.log(findLongestSubstring('thecatinthehat')); // 7
 console.log(findLongestSubstring('bbbbbb')); // 1
 console.log(findLongestSubstring('longestsubstring')); // 8
-console.log(findLongestSubstring('thisishowwedoit')) // 6);
+console.log(findLongestSubstring('thisishowwedoit')); // 6);
