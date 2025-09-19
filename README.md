@@ -52,6 +52,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Array
 |  |
 | ------- |
+| [0026-remove-duplicates-from-sorted-array](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0026-remove-duplicates-from-sorted-array) |
 | [0049-group-anagrams](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0049-group-anagrams) |
 | [0347-top-k-frequent-elements](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0347-top-k-frequent-elements) |
 | [0697-degree-of-an-array](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0697-degree-of-an-array) |
@@ -82,4 +83,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0948-sort-an-array](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0948-sort-an-array) |
+## Two Pointers
+|  |
+| ------- |
+| [0026-remove-duplicates-from-sorted-array](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0026-remove-duplicates-from-sorted-array) |
 <!---LeetCode Topics End-->
