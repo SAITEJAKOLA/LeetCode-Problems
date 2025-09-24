@@ -12,35 +12,33 @@ losely defined, the direction of pointers deepending upon the problem.
 //SumZero([-3,-2,-1,0,1,2,3])retuns [-3,3]
 
 function sumZero(arr: []): number[] {
-    if (arr.length === 0) return []
-    for (let i = 0; i <= arr.length - 1; i++) {
-        for (let j = i + 1; j <= arr.length - 1; j++) {
-            if (arr[i] + arr[j] === 0) {
-                return [arr[i], arr[j]]
-            }
-        }
-    }
-    return []
+	if (arr.length === 0) return [];
+	for (let i = 0; i <= arr.length - 1; i++) {
+		for (let j = i + 1; j <= arr.length - 1; j++) {
+			if (arr[i] + arr[j] === 0) {
+				return [arr[i], arr[j]];
+			}
+		}
+	}
+	return [];
 }
 
 //using 2 pointer mechanisam
 
 function sumZeroM(arr: number[]): number[] {
-    if (arr.length === 0) return []
-    let left = 0
-    let right = arr.length - 1
-    while (left < right) {
-        let sum = arr[left] + arr[right]
-        if (sum === 0) return [arr[left], arr[right]]
-        if (sum > 0) right--
-        else left++
-    }
-    return []
+	if (arr.length === 0) return [];
+	let left = 0;
+	let right = arr.length - 1;
+	while (left < right) {
+		let sum = arr[left] + arr[right];
+		if (sum === 0) return [arr[left], arr[right]];
+		if (sum > 0) right--;
+		else left++;
+	}
+	return [];
 }
-console.log("----------sumZeroM");
+console.log('----------sumZeroM');
 console.log(sumZeroM([-4, -3, -2, -1, 0, 1, 2, 3, 4, 5]));
-
-
 
 //CountUniqueValues
 //this can be dont using frequency counters and multiple pointers also
@@ -49,29 +47,28 @@ console.log(sumZeroM([-4, -3, -2, -1, 0, 1, 2, 3, 4, 5]));
 //using multiple pointers.
 
 function CountUniqueValues(arr: number[]): number {
-    if (arr.length === 0) return 0
-    let i = 0;
-    for (let j = 1; j <= arr.length - 1; j++) {
-        if (arr[i] === arr[j]) j++;
-        if (arr[i] != arr[j]) {
-            i++;
-            arr[i] = arr[j];
-        }
-    }
-    return i + 1;
+	if (arr.length === 0) return 0;
+	let i = 0;
+	for (let j = 1; j <= arr.length - 1; j++) {
+		if (arr[i] === arr[j]) j++;
+		if (arr[i] != arr[j]) {
+			i++;
+			arr[i] = arr[j];
+		}
+	}
+	return i + 1;
 }
-console.log("----------CountUniqueValues");
+console.log('----------CountUniqueValues');
 console.log(CountUniqueValues([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8]));
-
 
 //Easier way of doing is using frequency counters
 function CountUniqueValuesUsingFC(arr: number[]): number {
-    if (arr.length === 0) return 0
-    let fc: { [key: number]: number } = {}
-    for (let val of arr) fc[val] = (fc[val] || 0) + 1
-    return Object.keys(fc).length
+	if (arr.length === 0) return 0;
+	let fc: { [key: number]: number } = {};
+	for (let val of arr) fc[val] = (fc[val] || 0) + 1;
+	return Object.keys(fc).length;
 }
-console.log("----------CountUniqueValuesUsingFC");
+console.log('----------CountUniqueValuesUsingFC');
 console.log(CountUniqueValuesUsingFC([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6]));
 
 /*
@@ -97,14 +94,14 @@ Space - O(1)
 */
 
 function areThereDuplicates(...args: (string | number)[]): boolean {
-    if (args.length === 0) return false
-    args.sort()
-    for (let j = 0; j < args.length; j++) {
-        if (args[j] === args[j + 1]) return true
-    }
-    return false
+	if (args.length === 0) return false;
+	args.sort();
+	for (let j = 0; j < args.length; j++) {
+		if (args[j] === args[j + 1]) return true;
+	}
+	return false;
 }
-console.log("----------areThereDuplicates");
+console.log('----------areThereDuplicates');
 console.log(areThereDuplicates(1, 2, 3, 4, 2));
 /*
 Multiple Pointers - averagePair
@@ -127,18 +124,18 @@ averagePair([],4) // false
 */
 
 function averagePair(arr: number[], n: number): boolean {
-    if (arr.length === 0) return false;
-    let left = 0
-    let right = arr.length - 1;
-    while (left < right) {
-        let avg = (arr[left] + arr[right]) / 2
-        if (avg == n) return true
-        else if (avg < n) left++;
-        else right--;
-    }
-    return false
+	if (arr.length === 0) return false;
+	let left = 0;
+	let right = arr.length - 1;
+	while (left < right) {
+		let avg = (arr[left] + arr[right]) / 2;
+		if (avg == n) return true;
+		else if (avg < n) left++;
+		else right--;
+	}
+	return false;
 }
-console.log("----------averagePair");
+console.log('----------averagePair');
 console.log(averagePair([1, 2, 3], 2.5));
 console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1));
 console.log(averagePair([], 4));
@@ -161,20 +158,20 @@ Space Complexity - O(1)
 */
 
 function isSubsequence(str1: string, str2: string): boolean {
-    if (str1.length === 0 || str2.length === 0) return false;
-    let i = 0;
-    let j = 0;
-    while (j <= str2.length - 1) {
-        if (str1[i] === str2[j]) i++;
-        if (i === str1.length) return true;
-        j++;
-    }
-    return false
+	if (str1.length === 0 || str2.length === 0) return false;
+	let i = 0;
+	let j = 0;
+	while (j <= str2.length - 1) {
+		if (str1[i] === str2[j]) i++;
+		if (i === str1.length) return true;
+		j++;
+	}
+	return false;
 }
-console.log("----------isSubsequence");
+console.log('----------isSubsequence');
 console.log(isSubsequence('hello', 'hello world'));
-console.log(isSubsequence('sing', 'sting'));// false
-console.log(isSubsequence('abc', 'acb'));// false
+console.log(isSubsequence('sing', 'sting')); // false
+console.log(isSubsequence('abc', 'acb')); // false
 console.log(isSubsequence('abc', 'abracadabra'));
 
 /*
@@ -205,21 +202,33 @@ Time Complexity Requirement - O(n log n)
 Space Complexity Requirement - O(1)
 */
 function findPairUsingMP(arr: number[], n: number): boolean {
-    if (arr.length === 0) return false;
-    //first lets sort the array and check the difference for each 2 elements of the array using i and j
-    arr.sort((a, b) => a - b);
-    let i = 0;
-    let j = 1;
-    while (i < arr.length && j < arr.length) {
-        if (i !== j) {
-            let difference = arr[j] - arr[i]
-            if (difference === Math.abs(n)) return true;
-            else if (difference < Math.abs(n)) i++
-            else j++;
-        }
-        else j++;
-    }
-    return false;
+	if (arr.length === 0) return false;
+	//first lets sort the array and check the difference for each 2 elements of the array using i and j
+	arr.sort((a, b) => a - b);
+	let i = 0;
+	let j = 1;
+	while (i < arr.length && j < arr.length) {
+		if (i !== j) {
+			let difference = arr[j] - arr[i];
+			if (difference === Math.abs(n)) return true;
+			else if (difference < Math.abs(n)) i++;
+			else j++;
+		} else j++;
+	}
+	return false;
 }
-console.log("----------findPairUsingMP");
-console.log(findPairUsingMP([6,1,4,10,2,4], 2));
+console.log('----------findPairUsingMP');
+console.log(findPairUsingMP([6, 1, 4, 10, 2, 4], 2));
+
+function findSumPair1(arr: number[], n: number): number[] {
+	if (arr.length === 0) return [];
+	let set = new Set();
+
+	for (let val of arr) {
+		if (set.has(n - val)) return [val, n - val];
+		else set.add(val);
+	}
+	return [];
+}
+
+console.log(findSumPair1([6, 1, 4, 10, 1, 4], 7));
