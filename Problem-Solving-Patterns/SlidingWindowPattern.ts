@@ -19,7 +19,7 @@ maxSubarraySum([1,2,5,2,8,1,5],4)//17
 //Requirement -  The function should calculate max sum of n consecutive elements in the array
 
 //timecomplexity is of O(n^2)
-function maxSubArraySum(arr: number[], n: number): number {
+function maxSubArraySum1(arr: number[], n: number): number {
 	if (arr.length === 0) return 0;
 	let max = 0;
 	for (let i = 0; i <= arr.length - n + 1; i++) {
@@ -29,8 +29,8 @@ function maxSubArraySum(arr: number[], n: number): number {
 	}
 	return max;
 }
-console.log(maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 2));
-console.log(maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 4));
+console.log(maxSubArraySum1([1, 2, 5, 2, 8, 1, 5], 2));
+console.log(maxSubArraySum1([1, 2, 5, 2, 8, 1, 5], 4));
 
 //Using sliding window method with time complexity of O(n)
 function maxSubArraySumusingSlidingWindow(arr: number[], n: number): number {
