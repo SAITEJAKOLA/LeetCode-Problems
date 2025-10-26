@@ -1,18 +1,11 @@
 function removeElement(nums: number[], val: number): number {
-    if(nums.length === 0) return 0;
-    let i=0;
-    let j= nums.length;
-
-    // The idea is to replace matched element with a valid element from j-1 unitll i<j;
-    while(i<j){
-        if(nums[i]===val){
-            nums[i]= nums[j-1];
-            nums[j] = val;
-            j--;
-        }
-        else{
-            i++;
+    if(nums.length===0) return 0;
+    let x=0;
+    for(let i=0; i<nums.length;i++){
+        if(nums[i]!==val){
+            nums[x] = nums[i]
+            x++;
         }
     }
-    return j;
+    return x;
 };
