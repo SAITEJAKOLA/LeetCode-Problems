@@ -1,4 +1,4 @@
-function isPalindrome(x: number): boolean {
+function isPalindrome1(x: number): boolean {
 	// Handling negative numbers
 	if (x < 0) return false;
 	let str = x.toString();
@@ -26,7 +26,7 @@ function isPalindromString(x: number): boolean {
 
 //Reversing of a number
 
-function reverse(x: number): number {
+function reverse1(x: number): number {
 	let sign = Math.sign(x);
 	if (x < 0) x = Math.abs(x);
 	if (x === 0) return 0;

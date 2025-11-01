@@ -5,7 +5,6 @@ function reverse(x: number): number {
 	let str = x.toString().split('');
 	let left = 0;
 	let right = str.length - 1;
-	let middle = Math.floor(str.length / 2);
 	while (left < right) {
 		[str[left], str[right]] = [str[right], str[left]];
 		left++;
