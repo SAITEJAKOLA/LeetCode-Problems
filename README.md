@@ -8,6 +8,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0049-group-anagrams](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0049-group-anagrams) |
 | [0242-valid-anagram](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0242-valid-anagram) |
+| [0268-missing-number](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0268-missing-number) |
 | [0347-top-k-frequent-elements](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0347-top-k-frequent-elements) |
 | [0387-first-unique-character-in-a-string](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0387-first-unique-character-in-a-string) |
 | [0451-sort-characters-by-frequency](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0451-sort-characters-by-frequency) |
@@ -26,6 +27,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0049-group-anagrams](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0049-group-anagrams) |
 | [0088-merge-sorted-array](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0088-merge-sorted-array) |
 | [0242-valid-anagram](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0242-valid-anagram) |
+| [0268-missing-number](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0268-missing-number) |
 | [0347-top-k-frequent-elements](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0347-top-k-frequent-elements) |
 | [0451-sort-characters-by-frequency](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0451-sort-characters-by-frequency) |
 | [0948-sort-an-array](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0948-sort-an-array) |
@@ -60,6 +62,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0088-merge-sorted-array](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0088-merge-sorted-array) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0121-best-time-to-buy-and-sell-stock) |
 | [0167-two-sum-ii-input-array-is-sorted](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0167-two-sum-ii-input-array-is-sorted) |
+| [0268-missing-number](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0268-missing-number) |
 | [0283-move-zeroes](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0283-move-zeroes) |
 | [0347-top-k-frequent-elements](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0347-top-k-frequent-elements) |
 | [0485-max-consecutive-ones](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0485-max-consecutive-ones) |
@@ -79,6 +82,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0167-two-sum-ii-input-array-is-sorted](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0167-two-sum-ii-input-array-is-sorted) |
+| [0268-missing-number](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0268-missing-number) |
 | [0792-binary-search](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0792-binary-search) |
 ## Merge Sort
 |  |
@@ -106,8 +110,13 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0007-reverse-integer](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0007-reverse-integer) |
 | [0009-palindrome-number](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0009-palindrome-number) |
+| [0268-missing-number](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0268-missing-number) |
 ## Dynamic Programming
 |  |
 | ------- |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0121-best-time-to-buy-and-sell-stock) |
+## Bit Manipulation
+|  |
+| ------- |
+| [0268-missing-number](https://github.com/SAITEJAKOLA/LeetCode-Problems/tree/master/0268-missing-number) |
 <!---LeetCode Topics End-->
