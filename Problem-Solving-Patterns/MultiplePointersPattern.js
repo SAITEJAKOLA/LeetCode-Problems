@@ -13,30 +13,30 @@ losely defined, the direction of pointers deepending upon the problem.
 
 // using for loops -O(n2)
 function SumZero(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[i] + arr[j] === 0) {
-        return [arr[i], arr[j]];
-      }
-    }
-  }
+	for (let i = 0; i < arr.length; i++) {
+		for (let j = i + 1; j < arr.length; j++) {
+			if (arr[i] + arr[j] === 0) {
+				return [arr[i], arr[j]];
+			}
+		}
+	}
 }
 console.log(SumZero([-3, -2, -1, 0, 1, 2, 3]));
 
 //using 2 pointers pattern o(n)
 function SumZero(arr) {
-  let left = 0;
-  let right = arr.length - 1;
-  while (left < right) {
-    let sum = arr[left] + arr[right];
-    if (sum === 0) {
-      return [arr[left], arr[right]];
-    } else if (sum > 1) {
-      right--;
-    } else {
-      left++;
-    }
-  }
+	let left = 0;
+	let right = arr.length - 1;
+	while (left < right) {
+		let sum = arr[left] + arr[right];
+		if (sum === 0) {
+			return [arr[left], arr[right]];
+		} else if (sum > 1) {
+			right--;
+		} else {
+			left++;
+		}
+	}
 }
 
 console.log(SumZero([-4, -3, -2, -1, 0, 1, 2, 3, 10, 11]));
@@ -47,29 +47,52 @@ console.log(SumZero([-4, -3, -2, -1, 0, 1, 2, 3, 10, 11]));
 
 //using multiple pointers.
 function CountUniqueValues(arr) {
-  let i = 0;
-  for (let j = 1; j < arr.length; j++) {
-    if (arr[i] == arr[j]) {
-      j++;
-    } else if (arr[i] !== arr[j]) {
-      arr[i] = arr[j];
-      i++;
-    }
-  }
-  return i + 1;
+	let i = 0;
+	for (let j = 1; j < arr.length; j++) {
+		if (arr[i] == arr[j]) {
+			j++;
+		} else if (arr[i] !== arr[j]) {
+			arr[i] = arr[j];
+			i++;
+		}
+	}
+	return i + 1;
 }
 console.log(CountUniqueValues([1, 1, 2, 3, 4, 4, 5, 6, 7, 8]));
 
 //using frequency counters
 
 function CountUniqueValues(arr) {
-  let fc = {};
-  for (let val of arr) {
-    fc[val] = (fc[val] | 0) + 1;
-  }
-  console.log(fc);
-  const uniqueval = Object.keys(fc);
-  return uniqueval.length;
+	let fc = {};
+	for (let val of arr) {
+		fc[val] = (fc[val] | 0) + 1;
+	}
+	console.log(fc);
+	const uniqueval = Object.keys(fc);
+	return uniqueval.length;
 }
 
 console.log(CountUniqueValues([1, 1, 2, 3, 4, 4, 5, 6, 7, 8]));
+
+function countUniqueValuesUsingMP(arr) {
+	if (arr.length === 0) return 0;
+	if (arr.length === 1) return 1;
+	let count = 0;
+	let i = 0;
+	let j = 1;
+	while (i < arr.length || j < arr.length) {
+		if (arr[i] === arr[j]) {
+			j++;
+		} else {
+			count++;
+			i = j;
+			j++;
+		}
+	}
+	return count;
+}
+console.log(countUniqueValuesUsingMP([1, 1, 1, 1, 1, 2])); // 2)
+console.log(countUniqueValuesUsingMP([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])); // 7
+console.log(countUniqueValuesUsingMP([1]));
+console.log(countUniqueValuesUsingMP([1, 2]));
+
