@@ -35,3 +35,23 @@ function selectionsort(arr: number[]): number[] {
 	return arr;
 }
 console.log(selectionsort([330, 19, 22, 78, 4]));
+
+function selectionsort1(
+	arr: number[],
+	comp: (a: number, b: number) => number,
+): number[] {
+	if (arr.length === 0) return [];
+	if (typeof comp !== 'function') {
+		comp = function (a, b) {
+			return a - b;
+		};
+	}
+	for (let i = 0; i < arr.length; i++) {
+		let min = i;
+		for (let j = i + 1; j < arr.length; j++) {
+			if (comp(arr[min], arr[j]) > 0) min = j;
+		}
+		if (i !== min) [arr[min], arr[i]] = [arr[i], arr[min]];
+	}
+	return arr;
+}
