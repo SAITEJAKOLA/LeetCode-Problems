@@ -14,3 +14,6 @@ function sortArray(nums: number[]): number[] {
   return nums;
 }
 console.log(sortArray([5, 2, 3, 1])); // [1, 2, 3, 5]
+
+// console.log([1,2,3,4,5,6,7].sort((a,b)=> a-b));
+// console.log(['adsfjaksdhfla','bdskjfhalsdhjfkhalsdf','csdjfhlasjhfd','ddsajdhs'].sort((a,b)=> a.length-b.length));
