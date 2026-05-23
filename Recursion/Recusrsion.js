@@ -20,7 +20,7 @@ Two Essential parts of a recursive function!
 2.)Different input.
 
 Where things can go wrong.
-1)No base case
+1) No base case
 2) Forgetting t return or returning the wring thing!!
 */
 
@@ -83,10 +83,24 @@ function collectOddValues(arr) {
 }
 
 collectOddValues([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+function collectOdds(arr) {
+	if (arr.length === 0) return [];
+	let result = [];
+
+	function findOdd(arr) {
+		if (arr.length === 0) return 0;
+		if (arr[0] % 2 !== 0) result.push(arr[0]);
+		findOdd(arr.slice(1));
+	}
+	findOdd(arr);
+	return result;
+}
+
 /*
 pure recursion
 
-- For arrays, use methods like Slice, spread operator, and concat that makes copies of arrats so you do not mutate them.
+- For arrays, use methods like Slice, spread operator, and concat that makes copies of arrays so you do not mutate them.
 - Remeber that strings are immuatble so you will need to use methods like Slice, substr, substring to make copies of strings.
 - To make copies of objects use Objec.assign or the spread operator.
 */
@@ -205,3 +219,76 @@ function factorialofN(n) {
 	if (n === 0) return 1;
 	return n * factorialofN(n - 1);
 }
+
+function reverse(str) {
+	if (str.length === 0) return '';
+	//Strings are immutable so we need to split them first then perform operations
+	str = str.split('');
+	let start = 0;
+	let end = str.length - 1;
+	while (start < end) {
+		[str[start], str[end]] = [str[end], str[start]];
+		start++;
+		end--;
+	}
+	return str.join('');
+}
+console.log(reverse('abc'));
+
+// Try solving the same using recursion
+
+function reverseR(str) {
+	if (str.length === 0) return '';
+	return reverseR(str.slice(1)) + str[0];
+}
+console.log(reverseR('abc'));
+
+// isPalindrome('awesome') // false
+// isPalindrome('foobar') // false
+// isPalindrome('tacocat') // true
+// isPalindrome('amanaplanacanalpanama') // true
+// isPalindrome('amanaplanacanalpandemonium') // false
+
+function isPalindrome(str) {
+	// add whatever parameters you deem necessary - good luck!
+	function reverse(str) {
+		if (str.length === 0) return '';
+		return reverse(str.slice(1)) + str[0];
+	}
+	let result = reverse(str);
+	if (result === str) return true;
+	return false;
+}
+console.log(isPalindrome('aba'));
+
+// SAMPLE INPUT / OUTPUT
+const isOdd = (val) => val % 2 !== 0;
+
+// someRecursive([1,2,3,4], isOdd) // true
+// someRecursive([4,6,8,9], isOdd) // true
+// someRecursive([4,6,8], isOdd) // false
+// someRecursive([4,6,8], val => val > 10); // false
+
+function someRecursive(arr, isOdd) {
+	if (arr.length === 0) return false;
+	if (isOdd(arr[0])) return true;
+	return someRecursive(arr.slice(1), isOdd);
+}
+console.log(someRecursive([1, 2, 3, 4], isOdd));
+
+function flatten(arr) {
+	if (arr.length === 0) return [];
+	let result = [];
+	for (let val of arr) {
+		if (Array.isArray(val)) {
+			result = result.concat(flatten(val));
+		} else {
+			result.push(val);
+		}
+	}
+	return result;
+}
+console.log(flatten([1, 2, 3, [4, 5]])); // [1, 2, 3, 4, 5]
+console.log(flatten([1, [2, [3, 4], [[5]]]])); // [1, 2, 3, 4, 5]
+console.log(flatten([[1], [2], [3]])); // [1,2,3]
+console.log(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])); // [1,2,3]
