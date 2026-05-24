@@ -55,3 +55,21 @@ function selectionsort1(
 	}
 	return arr;
 }
+
+function selectionSort2(arr: number[]): number[] {
+	if (arr.length === 0) return [];
+	//Here the idea is to track the min through out the array and swap only once at the end of the loop. We use 2 loops here as well
+	//we start outer loop at starting and inner loop at starting+1 and we assume starting is min value and we travese through out the array, if min is really min swap it to the staring position.
+	for (let i = 0; i < arr.length; i++) {
+		let min = i;
+		for (let j = i + 1; j < arr.length; j++) {
+			if (arr[min] > arr[j]) {
+				min = j;
+			}
+			console.log(min);
+		}
+		if (i !== min) [arr[i], arr[min]] = [arr[min], arr[i]];
+	}
+	return arr;
+}
+console.log(selectionSort2([3, 2, 1, 4, 5]));

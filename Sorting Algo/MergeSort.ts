@@ -1,3 +1,11 @@
+//Here the whole idea revolves around using recurssion,
+// breaking down the arrays into smaller arrays and then compare the individual arrays and merge them back into one.
+
+//Psuedo code
+// Split the arrays into two half and further split them into equals until you reach 1 element an array.
+// Use a helper function merge which will check each element of 2 arrays passed into it
+// and compares each elements of both the arrays and pushed in an order.
+
 function merge1(arr1: number[], arr2: number[]): number[] {
 	let result: number[] = [];
 	let i = 0;

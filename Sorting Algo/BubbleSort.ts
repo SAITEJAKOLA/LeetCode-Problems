@@ -41,3 +41,23 @@ function bubbleSort(
 	}
 	return arr;
 }
+
+function bubbleSort2(arr: number[]): number[] {
+	if (arr.length === 0) return [];
+	let noswaps; // For optimisation
+	//The idea is to bubble the largest number to the end of the array, so we use 2 for loops,
+	// outer loop starts at the end of array and will track the already sorted element at the end and
+	// inner loop will start at starting of the arrya and iterate unitl outer-1 to check if the inner and inner +1 which is bigger.
+	for (let i = arr.length; i > 0; i--) {
+		noswaps = true;
+		console.log();
+		for (let j = 0; j < i - 1; j++) {
+			if (arr[j] > arr[j + 1]) {
+				[arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+				noswaps = false;
+			}
+		}
+		if (noswaps) break;
+	}
+	return arr;
+}
