@@ -39,3 +39,43 @@ function mergeSort(arr: number[]): number[] {
 	return merge1(left, right);
 }
 console.log(mergeSort([10, 24, 76, 73]));
+
+let compator = (a, b) => a - b;
+function merge2(
+	arr1: number[],
+	arr2: number[],
+	compator: (a: number, b: number) => number = (a, b) => a - b,
+): number[] {
+	let result: number[] = [];
+	let i = 0;
+	let j = 0;
+	while (i < arr1.length && j < arr2.length) {
+		if (compator(arr1[i], arr2[j]) < 0) {
+			result.push(arr1[i]);
+			i++;
+		} else {
+			result.push(arr2[j]);
+			j++;
+		}
+	}
+	while (i < arr1.length) {
+		result.push(arr1[i]);
+		i++;
+	}
+	while (j < arr2.length) {
+		result.push(arr2[j]);
+		j++;
+	}
+	return result;
+}
+
+function mergeSort1(
+	arr: number[],
+	compator: (a: number, b: number) => number,
+): number[] {
+	if (arr.length <= 1) return arr;
+	let mid = Math.floor(arr.length / 2);
+	let left = mergeSort1(arr.slice(0, mid), compator);
+	let right = mergeSort1(arr.slice(mid), compator);
+	return merge2(left, right, compator);
+}
