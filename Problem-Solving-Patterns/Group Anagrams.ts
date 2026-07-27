@@ -39,3 +39,4 @@ function groupAnagramsBasic(strs: string[]): string[][] {
 	}
 	return output;
 }
+console.log(groupAnagramsBasic(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']));

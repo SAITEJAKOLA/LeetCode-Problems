@@ -1,29 +1,28 @@
-//Write a function called same, which accepts two arrays. 
-// The function should return true if every value in the array has it's corresponding value squared in the second array. 
+//Write a function called same, which accepts two arrays.
+// The function should return true if every value in the array has it's corresponding value squared in the second array.
 // The frequency of values must be the same.
 
 function same(arr1: number[], arr2: number[]): boolean {
-    if (arr1.length !== arr2.length) return false
-    let fc1: { [key: number]: number } = {};
-    let fc2: { [key: number]: number } = {}
-    for (let val of arr1) {
-        fc1[val] = (fc1[val] || 0) + 1;
-    }
-    for (let val of arr2) {
-        fc2[val] = (fc2[val] || 0) + 1
-    }
-    console.log(fc1, fc2);
-    for (let key in fc1) {
-        let numkey = Number(key)
-        //check if the key^2 is available in fc2 if not return false
-        if (!(numkey ** 2 in fc2)) return false
-        //check if key counts are matching in fc2 and fc1
-        if (fc2[numkey ** 2] != fc1[key]) return false
-    }
-    return true
-
+	if (arr1.length !== arr2.length) return false;
+	let fc1: { [key: number]: number } = {};
+	let fc2: { [key: number]: number } = {};
+	for (let val of arr1) {
+		fc1[val] = (fc1[val] || 0) + 1;
+	}
+	for (let val of arr2) {
+		fc2[val] = (fc2[val] || 0) + 1;
+	}
+	console.log(fc1, fc2);
+	for (let key in fc1) {
+		let numkey = Number(key);
+		//check if the key^2 is available in fc2 if not return false
+		if (!(numkey ** 2 in fc2)) return false;
+		//check if key counts are matching in fc2 and fc1
+		if (fc2[numkey ** 2] != fc1[key]) return false;
+	}
+	return true;
 }
-same([1, 2, 3], [1, 4, 9])
+same([1, 2, 3], [1, 4, 9]);
 
 /*
 Frequency Counter - sameFrequency
@@ -41,21 +40,24 @@ sameFrequency(22,222) // false
 */
 
 function sameFrequency(n: number, m: number): boolean {
-    let num1 = n.toString();
-    let num2 = m.toString();
-    let fc1: { [key: string]: number } = {}
-    let fc2: { [key: string]: number } = {}
-    for (let val of num1) { fc1[val] = (fc1[val] || 0) + 1 }
-    for (let val of num2) { fc2[val] = (fc2[val] || 0) + 1 }
-    console.log(`fc1: ${JSON.stringify(fc1)} \n fc2: ${JSON.stringify(fc2)}`);
-    //now check the if the both the frequencies has same key and and same values
+	let num1 = n.toString();
+	let num2 = m.toString();
+	let fc1: { [key: string]: number } = {};
+	let fc2: { [key: string]: number } = {};
+	for (let val of num1) {
+		fc1[val] = (fc1[val] || 0) + 1;
+	}
+	for (let val of num2) {
+		fc2[val] = (fc2[val] || 0) + 1;
+	}
+	console.log(`fc1: ${JSON.stringify(fc1)} \n fc2: ${JSON.stringify(fc2)}`);
+	//now check the if the both the frequencies has same key and and same values
 
-    for (let key in fc1) {
-        if (!(key in fc2)) return false
-        if (fc1[key] !== fc2[key]) return false
-    }
-    return true;
-
+	for (let key in fc1) {
+		if (!(key in fc2)) return false;
+		if (fc1[key] !== fc2[key]) return false;
+	}
+	return true;
 }
 console.log(sameFrequency(123, 323));
 
@@ -82,12 +84,12 @@ Space - O(1)
 */
 
 function areThereDuplicatess(...args: (string | number)[]): boolean {
-    let fc: { [key: number | string]: number } = {}
-    for (let val of args) {
-        if (fc[val]) return true;
-        fc[val] = 1
-    }
-    return false
+	let fc: { [key: number | string]: number } = {};
+	for (let val of args) {
+		if (fc[val]) return true;
+		fc[val] = 1;
+	}
+	return false;
 }
 console.log(areThereDuplicatess('a', 'b', 'c', 'a'));
 console.log(areThereDuplicatess(1, 2, 2));
@@ -97,10 +99,10 @@ console.log(areThereDuplicatess(1, 2, 3));
 //Answer is very simple create a new set using this array and check the lengths of set and array, if both are same return false else retrun true
 
 function areThereDuplicatesUsingSets(...args: (string | number)[]): boolean {
-    if (args.length === 0) return false;
-    let newSet = new Set(args)
-    if (args.length === newSet.size) return false
-    return true
+	if (args.length === 0) return false;
+	let newSet = new Set(args);
+	if (args.length === newSet.size) return false;
+	return true;
 }
 
 console.log(areThereDuplicatesUsingSets('a', 'b', 'c', 'a'));
@@ -126,24 +128,28 @@ constructNote('aabbcc', 'bcabcaddff') // true
 */
 
 function constructNote(str1: string, str2: string): boolean {
-    // add whatever parameters you deem necessary - good luck!
-    if (str1.length === 0 && str2.length === 0) return true;
-    str1.toLowerCase();
-    str2.toLowerCase();
-    let fc1: { [key: string]: number } = {}
-    let fc2: { [key: string]: number } = {}
-    for (let val of str1) { fc1[val] = (fc1[val] || 0) + 1; }
-    for (let val of str2) { fc2[val] = (fc2[val] || 0) + 1; }
+	// add whatever parameters you deem necessary - good luck!
+	if (str1.length === 0 && str2.length === 0) return true;
+	str1.toLowerCase();
+	str2.toLowerCase();
+	let fc1: { [key: string]: number } = {};
+	let fc2: { [key: string]: number } = {};
+	for (let val of str1) {
+		fc1[val] = (fc1[val] || 0) + 1;
+	}
+	for (let val of str2) {
+		fc2[val] = (fc2[val] || 0) + 1;
+	}
 
-    for (let key in fc1) {
-        if (!(key in fc2)) return false
-        if (fc1[key] > fc2[key]) return false
-    }
-    return true;
+	for (let key in fc1) {
+		if (!(key in fc2)) return false;
+		if (fc1[key] > fc2[key]) return false;
+	}
+	return true;
 }
-constructNote('aa', 'abc') // false
-constructNote('abc', 'dcba') // true
-constructNote('aabbcc', 'bcabcaddff') // true
+constructNote('aa', 'abc'); // false
+constructNote('abc', 'dcba'); // true
+constructNote('aabbcc', 'bcabcaddff'); // true
 
 /*
 Frequency Counter - findAllDuplicates
@@ -156,20 +162,22 @@ Time Complexity - O(n)
 */
 
 function findAllDuplicates(arr: number[]): number[] {
-    if (arr.length === 0) return [];
-    let fc: { [key: number]: number } = {}
-    for (let val of arr) fc[val] = (fc[val] || 0) + 1;
-    let duplicatesArray: number[] = [];
-    for (let key in fc) {
-        if (fc[key] == Number(2)) duplicatesArray.push(Number(key));
-    }
-    return duplicatesArray;
+	if (arr.length === 0) return [];
+	let fc: { [key: number]: number } = {};
+	for (let val of arr) fc[val] = (fc[val] || 0) + 1;
+	let duplicatesArray: number[] = [];
+	for (let key in fc) {
+		if (fc[key] == Number(2)) duplicatesArray.push(Number(key));
+	}
+	return duplicatesArray;
 }
 console.log(findAllDuplicates([4, 3, 2, 7, 8, 2, 3, 1]));
 
 /*
 Multiple Pointers - isSubsequence
-Write a function called isSubsequence which takes in two strings and checks whether the characters in the first string form a subsequence of the characters in the second string.In other words, the function should check whether the characters in the first string appear somewhere in the second string, without their order changing.
+Write a function called isSubsequence which takes in two strings and checks whether the characters in the first string form a subsequence of the characters in the second string.
+In other words, the function should check whether the characters in the first string appear somewhere in the second string,
+ without their order changing.
 
     Examples:
 
@@ -186,19 +194,19 @@ Space Complexity - O(1)
 
 // Note: this is not a correct solution as the order does not matter here in the logic.
 function isSubsequenceUsingFC(str1: string, str2: string): boolean {
-    if (str1.length === 0 || str2.length === 0) return false;
-    let fc1: { [key: string]: number } = {};
-    let fc2: { [key: string]: number } = {};
-    for (let val of str1) fc1[val] = (fc1[val] || 0) + 1;
-    for (let val of str2) fc2[val] = (fc2[val] || 0) + 1;
+	if (str1.length === 0 || str2.length === 0) return false;
+	let fc1: { [key: string]: number } = {};
+	let fc2: { [key: string]: number } = {};
+	for (let val of str1) fc1[val] = (fc1[val] || 0) + 1;
+	for (let val of str2) fc2[val] = (fc2[val] || 0) + 1;
 
-    for (let key in fc1) {
-        if (!(key in fc2)) return false;
-        if (!(fc2[key] >= fc1[key])) return false;
-    }
-    return true;
+	for (let key in fc1) {
+		if (!(key in fc2)) return false;
+		if (!(fc2[key] >= fc1[key])) return false;
+	}
+	return true;
 }
-console.log("----------isSubsequenceUsingFC");
+console.log('----------isSubsequenceUsingFC');
 
 /*
 Frequency Counter / Multiple Pointer - findPair
@@ -229,30 +237,31 @@ Space Complexity Requirement - O(1)
 */
 
 function findPairUsingFC(arr: number[], n: number): boolean {
-    if (arr.length === 0) return false
-    let fc: { [key: number]: number } = {}
-    for (let val of arr) fc[val] = (fc[val] || 0) + 1;
-    console.log(fc);
-    for (let key in fc) {
-        //now check if n === 0 and if fc[key]>1 then return true;
-        let num = Number(key)
-        if (n === 0 && fc[num] > 1) return true;
-        else if (n !== 0 && fc.hasOwnProperty(num + n)) return true;
-    }
-    return false
+	if (arr.length === 0) return false;
+	let fc: { [key: number]: number } = {};
+	for (let val of arr) fc[val] = (fc[val] || 0) + 1;
+	console.log(fc);
+	for (let key in fc) {
+		//now check if n === 0 and if fc[key]>1 then return true;
+		let num = Number(key);
+		// check if n =0 which means the difference between 2 numbers is 0 and if fc[key]>1 return true;
+		if (n === 0 && fc[num] > 1) return true;
+		// now if n!=0 fc has a another key which has a key + n in the keys list.
+		else if (n !== 0 && fc.hasOwnProperty(num + n)) return true;
+	}
+	return false;
 }
 console.log('------------findPairUsingFC');
 console.log(findPairUsingFC([6, 1, 4, 10, 2, 4], 2));
 
-
 function findPairUsingSets(arr: number[], n: number): boolean {
-    if (arr.length === 0) return false
-    let newSet = new Set();
-    for (let num of arr) {
-        if (newSet.has(num + n) || newSet.has(num - n)) return true
-        newSet.add(num)
-    }
-    return false
+	if (arr.length === 0) return false;
+	let newSet = new Set();
+	for (let num of arr) {
+		if (newSet.has(num + n) || newSet.has(num - n)) return true;
+		newSet.add(num);
+	}
+	return false;
 }
 console.log('------------findPairUsingSets');
 console.log(findPairUsingFC([6, 1, 4, 10, 2, 4], 2));

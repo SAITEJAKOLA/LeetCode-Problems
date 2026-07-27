@@ -96,3 +96,16 @@ console.log(countUniqueValuesUsingMP([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])); // 
 console.log(countUniqueValuesUsingMP([1]));
 console.log(countUniqueValuesUsingMP([1, 2]));
 
+function sumZerousingSets(arr) {
+	if (arr.length === 0) return [];
+	let newSet = new Set();
+	let result = [];
+	for (let val of arr) {
+		if (newSet.has(-val)) {
+			result.push([-val, val]);
+		}
+		newSet.add(val);
+	}
+	return result;
+}
+console.log(sumZerousingSets([-3, -2, -1, 0, 1, 2, 3]));
