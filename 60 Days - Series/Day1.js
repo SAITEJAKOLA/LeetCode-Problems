@@ -127,3 +127,16 @@ function secondLargest(arr) {
 }
 console.log(secondLargest([10, 5, 8, 10, 3]));
 console.log(secondLargest([5, 5, 5]));
+
+function isPalindrome(str) {
+	if (str.length === 0) false;
+	let i = 0;
+	let j = str.length - 1;
+	while (i < j) {
+		// again think of negative condition, what is the condition that worth invalidating the loop.
+		if (str[i] !== str[j]) return false;
+		(i++, j--);
+	}
+	return true;
+}
+console.log(isPalindrome('abccba'));
