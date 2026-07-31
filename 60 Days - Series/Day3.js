@@ -179,3 +179,4 @@ function groupValidAnagrams(strs) {
 	return map;
 }
 console.log(groupValidAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']));
+
