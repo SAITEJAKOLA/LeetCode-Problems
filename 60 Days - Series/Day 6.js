@@ -107,6 +107,7 @@ function lengthOfLongestSubstringKDistinct(s, k) {
 	let i = 0;
 	for (let j = 0; j < s.length; j++) {
 		map.set(s[j], (map.get(s[j]) || 0) + 1);
+		// Invarinat - the condition that should be true for the window to be valid. If Invalid start shrinking
 		while (map.size > k) {
 			map.set(s[i], map.get(s[i]) - 1);
 			if (map.get(s[i]) === 0) {
@@ -140,3 +141,43 @@ function longestOnes(arr, k) {
 console.log(
 	longestOnes([0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1], 3),
 );
+
+function characterReplacement(s, k) {
+	if (s.length === 0 || k < 0) return 0;
+	let maxFreq = 0;
+	let i = 0;
+	let map = new Map();
+	let max = 0;
+	for (let j = 0; j < s.length; j++) {
+		map.set(s[j], (map.get(s[j]) || 0) + 1);
+		maxFreq = Math.max(maxFreq, map.get(s[j]));
+		while (j - i + 1 - maxFreq > k) {
+			map.set(s[i], map.get(s[i]) - 1);
+			if (map.get(s[i] === 0)) map.delete(s[i]);
+			i++;
+		}
+		max = Math.max(max, j - i + 1);
+	}
+	return max;
+}
+console.log(characterReplacement('AABABBA', 1));
+
+function totalFruit(arr) {
+	if (arr.length === 0) return 0;
+	let i = 0;
+	let max = 0;
+	let map = new Map();
+	for (let j = 0; j < arr.length; j++) {
+		map.set(arr[j], (map.get(arr[j]) || 0) + 1);
+		while (map.size > 2) {
+			map.set(arr[i], map.get(arr[i]) - 1);
+			if (map.get(arr[i]) === 0) map.delete(arr[i]);
+			i++;
+		}
+		max = Math.max(max, j - i + 1);
+	}
+	return max;
+}
+console.log(totalFruit([1, 2, 1]));
+console.log(totalFruit([0, 1, 2, 2]));
+console.log(totalFruit([1, 2, 3, 2, 2]));
