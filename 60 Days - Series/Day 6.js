@@ -82,3 +82,61 @@ function maxDistinctCharacters(str, k) {
 }
 
 console.log(maxDistinctCharacters('abac', 3));
+
+function lengthOfLongestSubstring(s) {
+	if (s.length === 0) return 0;
+	let max = 0;
+	let i = 0;
+	let set = new Set();
+	for (let j = 0; j < s.length; j++) {
+		while (set.has(s[j])) {
+			set.delete(s[i]);
+			i++;
+		}
+		set.add(s[j]);
+		max = Math.max(max, j - i + 1);
+	}
+	return max;
+}
+console.log(lengthOfLongestSubstring('abcabcbb'));
+
+function lengthOfLongestSubstringKDistinct(s, k) {
+	if (s.length === 0 || k <= 0 || k > s.length) return 0;
+	let max = 0;
+	let map = new Map();
+	let i = 0;
+	for (let j = 0; j < s.length; j++) {
+		map.set(s[j], (map.get(s[j]) || 0) + 1);
+		while (map.size > k) {
+			map.set(s[i], map.get(s[i]) - 1);
+			if (map.get(s[i]) === 0) {
+				map.delete(s[i]);
+			}
+			i++;
+		}
+		max = Math.max(max, j - i + 1);
+	}
+	return max;
+}
+console.log(lengthOfLongestSubstringKDistinct('eceb', 2));
+
+function longestOnes(arr, k) {
+	if (arr.length === 0 || k < 0) return 0;
+	let zeroCount = 0;
+	let max = 0;
+	let i = 0;
+	let map = new Map();
+	for (let j = 0; j < arr.length; j++) {
+		if (arr[j] === 0) zeroCount++;
+		while (zeroCount > k) {
+			//shrink
+			if (arr[i] === 0) zeroCount--;
+			i++;
+		}
+		max = Math.max(max, j - i + 1);
+	}
+	return max;
+}
+console.log(
+	longestOnes([0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1], 3),
+);
